@@ -1,2 +1,0 @@
-# TMPieChart
-PieChartView

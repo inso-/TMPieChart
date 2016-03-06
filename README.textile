@@ -1,0 +1,6 @@
+# TMPieChartDonutsPicker
+
+
+
+Thanks to XY Feng for XYPieChart
+Thanks to Kirby Turner for KTOneFingerRotationGestureRecognizer
