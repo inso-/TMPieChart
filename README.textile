@@ -1,6 +1,77 @@
-# TMPieChartDonutsPicker
+h1. TMPieChartDonutsPicker
+
+TMPieChartDonutsPicker is an simple and easy-to-use pie chart and Donuts Picker for iOS.
 
 
+h2. Features
 
-Thanks to XY Feng for XYPieChart
-Thanks to Kirby Turner for KTOneFingerRotationGestureRecognizer
+* customized color for slices (default color supported)
+* animated insert/delete slice(s)
+* slice selection animation
+* text label option of showing percentage or actual value
+* text label auto-hide when slice is too small
+* customizable text label font and relative postion
+* pie opening/closing animation
+* pie starting angle support
+* ARC(Automatic Reference Counting) support
+* interface builder support
+* donuts resizable View
+* donuts fillable view (to put a button/image/etc ...) in the donuts view
+* selection slice with delegate
+* triangle picker with delegate
+* one gesture rotation on pie chart
+* rotation animation 
+
+h2. Installation
+
+* Drag the @TMPieChartDonutsPicker/TMPieChartDonutsPicker@ folder into your project. 
+* Add the *QuartzCore* framework to your project. 
+
+h2. Usage
+
+(see sample Xcode project in @/Demo@)
+
+Set PieChart properties:
+
+<pre>
+[self.pieChart setDelegate:self];
+[self.pieChart setDataSource:self];
+[self.pieChart setStartPieAngle:M_PI_2];	//optional
+[self.pieChart setAnimationSpeed:1.0];	//optional
+[self.pieChart setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:24]];	//optional
+[self.pieChart setLabelColor:[UIColor blackColor]];	//optional, defaults to white
+[self.pieChart setLabelShadowColor:[UIColor blackColor]];	//optional, defaults to none (nil)
+[self.pieChart setLabelRadius:160];	//optional
+[self.pieChart setShowPercentage:YES];	//optional
+[self.pieChart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];	//optional
+[self.pieChart setPieCenter:CGPointMake(240, 240)];	//optional
+[self.pieChart setShowTriangle:NO]; // optional
+[self.pieChart setShowDonuts:YES]; // optional
+[self.pieChart setDonutsSize:self.pieChart.frame.size.height / 2]; // optional
+[self.pieChart setSelectable:YES]; // optional
+[self.pieChart setRotationGesture:YES];
+</pre>
+
+Implement Data Source Methods:
+
+<pre>
+- (NSUInteger)numberOfSlicesInPieChart:(TMPieChartDonutsPicker *)pieChart;
+- (CGFloat)pieChart:(TMPieChartDonutsPicker *)pieChart valueForSliceAtIndex:(NSUInteger)index;
+- (UIColor *)pieChart:(TMPieChartDonutsPicker *)pieChart colorForSliceAtIndex:(NSUInteger)index;	//optional
+- (NSString *)pieChart:(TMPieChartDonutsPicker *)pieChart textForSliceAtIndex:(NSUInteger)index;	//optional
+</pre>
+
+Implement  Delegate Methods (OPTIONAL):
+
+<pre>
+- (void)pieChart:(TMPieChartDonutsPicker *)pieChart willSelectSliceAtIndex:(NSUInteger)index;
+- (void)pieChart:(TMPieChartDonutsPicker *)pieChart didSelectSliceAtIndex:(NSUInteger)index;
+- (void)pieChart:(TMPieChartDonutsPicker *)pieChart willDeselectSliceAtIndex:(NSUInteger)index;
+- (void)pieChart:(TMPieChartDonutsPicker *)pieChart didDeselectSliceAtIndex:(NSUInteger)index;
+</pre>
+
+h2. Credits
+
+TMPieChartDonutsPicker is created by Thomas Moussajee
+🙏 Special Thanks to XY Feng for XYPieChart
+🙏 Special Thanks to Kirby Turner for KTOneFingerRotationGestureRecognizer
